@@ -4,14 +4,16 @@ using HowToCookThatAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HowToCookThatAPI.Migrations
 {
     [DbContext(typeof(RecipesContext))]
-    partial class RecipesContextModelSnapshot : ModelSnapshot
+    [Migration("20210401125816_updated-user")]
+    partial class updateduser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +43,9 @@ namespace HowToCookThatAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AddedByUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -63,6 +68,8 @@ namespace HowToCookThatAPI.Migrations
                         .HasColumnType("time");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AddedByUserId");
 
                     b.HasIndex("CategoryId");
 
@@ -115,11 +122,17 @@ namespace HowToCookThatAPI.Migrations
 
             modelBuilder.Entity("HowToCookThatAPI.Models.Recipe", b =>
                 {
+                    b.HasOne("HowToCookThatAPI.Models.User", "AddedByUser")
+                        .WithMany()
+                        .HasForeignKey("AddedByUserId");
+
                     b.HasOne("HowToCookThatAPI.Models.Category", "Category")
                         .WithMany("Recipes")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AddedByUser");
 
                     b.Navigation("Category");
                 });

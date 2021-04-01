@@ -22,9 +22,9 @@ namespace HowToCookThatAPI.Models
 
         public string ImageUrl { get; set; }
 
-        public string AddedByUserId { get; set; }
+        //public string AddedByUserId { get; set; }
 
-        public virtual User AddedByUser { get; set; }
+        //public virtual User AddedByUser { get; set; }
 
         public int CategoryId { get; set; }
 
