@@ -1,0 +1,39 @@
+.site-header{
+    background-color: #95B700;
+    color: white;
+}
+.site-navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    max-width: 90%;
+    margin: auto;
+}
+
+.navigation-logo{
+    display: flex;
+}
+
+.navigation-logo img{
+    max-width: 70px;
+}
+.navigation-logo p{
+    font-size: 20px;
+    font-weight: 800;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.site-navigation-list{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    
+}
+
+.site-navigation-list li{
+    padding: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}

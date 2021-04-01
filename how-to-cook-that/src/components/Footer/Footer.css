@@ -1,0 +1,6 @@
+.site-footer{
+    display: flex;
+    justify-content: center;
+    background-color: #95B700;
+    color: white;
+}
