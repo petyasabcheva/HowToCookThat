@@ -1,0 +1,10 @@
+.recipe-categories-menu ul{
+    display: flex;
+    background-color: beige ;
+    justify-content: center;
+    list-style: none;
+}
+
+.recipe-categories-menu ul li{
+padding: 10px 20px;
+}

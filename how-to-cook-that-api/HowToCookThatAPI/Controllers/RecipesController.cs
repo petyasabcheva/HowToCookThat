@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HowToCookThatAPI.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace HowToCookThatAPI.Controllers
 {
