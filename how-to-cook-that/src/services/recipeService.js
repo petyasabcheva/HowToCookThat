@@ -1,7 +1,9 @@
-export const getAll = () => {
-    let url = 'http://localhost:56360/api/Recipes';
+let url = 'http://localhost:56360/api/';
+
+export const getAll = (category='') => {
+    let recipesUrl = url + ((category && category != 'all') ? `${category}` : 'Recipes');
    
-return fetch(url, {
+return fetch(recipesUrl, {
     headers: {
         'Content-Type': 'text/plain'
     }})

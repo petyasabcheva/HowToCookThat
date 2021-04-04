@@ -2,11 +2,13 @@ import RecipeList from '../RecipeList/RecipeList'
 import RecipeCategories from '../RecipeCategories/RecipeCategories'
 import './RecipeDashboard.css'
 
-const Component=()=>{
+const Component=({
+    match,
+})=>{
     return(
         <section className="recipe-dashboard-section">
             <RecipeCategories/>
-            <RecipeList/>
+            <RecipeList currentCategory={match.params.category}/>
         </section>
     )} 
 

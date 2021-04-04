@@ -8,12 +8,27 @@ class RecipeList extends Component {
         super(props);
         this.state = {
             recipes: [],
+            currentCategory: 'all',
+
         }
     }
     componentDidMount() {
         recipeService.getAll().then(res => this.setState({ recipes: res }));
     }
 
+    componentDidUpdate(prevProps) {
+        const category = this.props.currentCategory;
+
+        if (prevProps.currentCategory == category) {
+            return;
+        }
+
+        recipeService.getAll(category)
+            .then(res => {
+
+                this.setState({ recipes: res, currentCategory: category })
+            })
+    }
 
     render() {
         return (

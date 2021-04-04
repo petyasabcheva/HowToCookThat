@@ -1,3 +1,4 @@
+import './Recipe.css'
 const Recipe = (
     { id,
         name,

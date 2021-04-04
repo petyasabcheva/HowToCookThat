@@ -12,7 +12,7 @@ const Header = () => {
                     <p>How to cook that?!</p>
                 </div>
                 <ul className="site-navigation-list">
-                    <li><NavLink to=''>All recipes</NavLink></li>
+                    <li><NavLink to=''>Recipes</NavLink></li>
                     <li><NavLink to=''>My recipes</NavLink></li>
                     <li><NavLink to=''>Blog</NavLink></li>
                     <li><NavLink to=''>Sign in</NavLink></li>

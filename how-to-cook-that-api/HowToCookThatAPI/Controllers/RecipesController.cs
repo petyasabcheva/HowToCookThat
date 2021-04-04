@@ -28,6 +28,13 @@ namespace HowToCookThatAPI.Controllers
             return await _context.Recipes.ToListAsync();
         }
 
+        // GET: api/Recipes/categoryName
+        [HttpGet("/api/{categoryName}")]
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipeByCategory(string categoryName)
+        {
+            return await _context.Recipes.Where(x=>x.Category.Name==categoryName).ToListAsync();
+        }
+
         // GET: api/Recipes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)

@@ -9,7 +9,9 @@ function App() {
     <div className="App">
       <Header/>
       <Switch>
-        <Route path="/" component={RecipeDashboard} />
+        <Route path="/" exact component={RecipeDashboard} />
+        <Route path="/recipes" exact component={RecipeDashboard} />
+        <Route path="/recipes/:category" component={RecipeDashboard} />
       </Switch>
      <Footer/>
     </div>

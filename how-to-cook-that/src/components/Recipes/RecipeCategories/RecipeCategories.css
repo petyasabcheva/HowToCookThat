@@ -8,3 +8,8 @@
 .recipe-categories-menu ul li{
 padding: 10px 20px;
 }
+
+.nav-link-selected{
+    background: white;
+    color: black;
+}

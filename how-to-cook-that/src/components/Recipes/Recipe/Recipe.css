@@ -1,0 +1,11 @@
+.recipe-wrapper{
+    background: white;
+    margin: 10px;
+    padding: 15px;
+    max-width: 550px;
+    box-sizing: border-box;
+}
+
+.recipe-wrapper img{
+    max-width: 100%;
+}
