@@ -16,7 +16,7 @@
 }
 
 .navigation-logo img{
-    max-width: 70px;
+    max-width: 60px;
 }
 .navigation-logo p{
     font-size: 20px;
@@ -33,7 +33,7 @@
 }
 
 .site-navigation-list li{
-    padding: 15px;
+    padding:0 15px;
     font-size: 18px;
     font-weight: 600;
 }
