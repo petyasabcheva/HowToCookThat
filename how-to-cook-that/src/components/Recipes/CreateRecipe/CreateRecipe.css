@@ -1,0 +1,23 @@
+.create-recipe-section form{
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    margin: auto;
+}
+
+.create-recipe-section form input,
+.input select{
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.submit-button{
+    margin-top: 30px;
+}
+
+.create-recipe-section .field{
+    display: flex;
+    flex-direction: column;
+}

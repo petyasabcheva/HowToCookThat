@@ -14,7 +14,7 @@ const Header = () => {
                 <ul className="site-navigation-list">
                     <li><NavLink to=''>Recipes</NavLink></li>
                     <li><NavLink to=''>My recipes</NavLink></li>
-                    <li><NavLink to=''>Add recipe</NavLink></li>
+                    <li><NavLink to='/recipe/create'>Add recipe</NavLink></li>
                     <li><NavLink to=''>Blog</NavLink></li>
                     <li><NavLink to=''>Sign in</NavLink></li>
                 </ul>

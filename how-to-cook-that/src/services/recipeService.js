@@ -18,3 +18,13 @@ export const getOne = (id) => {
         .then(res => res.json())
         .catch(error => console.log(error));
 };
+
+export const create = (recipe) => {
+    return fetch(`${url}Recipes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipe)
+    });
+}

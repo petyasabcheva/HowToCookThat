@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using HowToCookThatAPI.Models;
+using HowToCookThatAPI.Models.InputModels;
 using Microsoft.AspNetCore.Cors;
 
 namespace HowToCookThatAPI.Controllers
@@ -83,12 +84,24 @@ namespace HowToCookThatAPI.Controllers
         // POST: api/Recipes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
+        public async Task<ActionResult<Recipe>> PostRecipe(RecipeInputModel input)
         {
+            var recipe = new Recipe()
+            {
+                Name = input.Name,
+                CategoryId = _context.Categories.Where(x => x.Name == input.Category).FirstOrDefault().Id,
+                ImageUrl = input.ImageUrl,
+                PreparationTime = input.PrepTime,
+                CookingTime = input.CookTime,
+                PortionsCount = input.Portions,
+                Instructions = input.Instructions
+            };
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
+            
+            return NoContent();
+            //return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
         }
 
         // DELETE: api/Recipes/5
