@@ -13,7 +13,6 @@ export const getAll = (category = '') => {
 }
 
 export const getOne = (id) => {
-    console.log(id);
     return fetch(`${url}Recipes/${id}`)
         .then(res => res.json())
         .catch(error => console.log(error));

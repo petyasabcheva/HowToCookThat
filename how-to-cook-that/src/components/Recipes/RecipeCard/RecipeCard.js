@@ -1,7 +1,7 @@
-import './Recipe.css'
+import './RecipeCard.css'
 import {Link} from 'react-router-dom';
 
-const Recipe = (
+const RecipeCard = (
     { id,
         name,
         imageUrl, }
@@ -17,4 +17,4 @@ const Recipe = (
     )
 }
 
-export default Recipe;
+export default RecipeCard;

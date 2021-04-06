@@ -4,7 +4,8 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import RecipeDashboard from './components/Recipes/RecipeDashboard/RecipeDashboard';
 import RecipeDetails from './components/Recipes/RecipeDetails/RecipeDetails';
-import CreateRecipe from './components/Recipes/CreateRecipe/CreateRecipe'
+import CreateRecipe from './components/Recipes/CreateRecipe/CreateRecipe';
+import EditRecipe from './components/Recipes/EditRecipe/EditRecipe';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/recipes/:category" exact component={RecipeDashboard} />
         <Route path="/recipes/details/:id" exact component={RecipeDetails} />
         <Route path="/recipe/create" exact component={CreateRecipe} />
+        <Route path="/recipe/edit/:id" exact component={EditRecipe} />
       </Switch>
      <Footer/>
     </div>

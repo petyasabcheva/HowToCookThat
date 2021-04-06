@@ -1,8 +1,20 @@
 import './CreateRecipe.css'
 import * as recipeService from '../../../services/recipeService';
+import * as categoriesService from '../../../services/categoriesService';
+import { useEffect, useState } from 'react';
 
 
-const CreateRecipe = () => {
+const CreateRecipe = ({
+    history,
+}) => {
+
+    let [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        categoriesService.getAll()
+        .then(res=>setCategories(res));
+    }, []);
+
     const onCreateRecipeSubmitHandler = (e) => {
         e.preventDefault()
         let recipe={
@@ -14,7 +26,9 @@ const CreateRecipe = () => {
             portions:e.target.portions.value,
             instructions:e.target.instructions.value
         }
-        console.log(recipeService.create(recipe));
+        recipeService.create(recipe).then(()=>{
+            history.push('/');
+        })
     }
 
     return (
@@ -29,10 +43,10 @@ const CreateRecipe = () => {
                     <label htmlFor="category">Category</label>
                     <span className="input">
                         <select type="text" name="category">
-                            <option value="soups">Soups</option>
-                            <option value="salads">Salads</option>
-                            <option value="deserts">Deserts</option>
-                            <option value="mains">Mains</option>
+                            {categories.map(x=>
+                               <option
+                               key={x.id}
+                               value={x.name}>{x.name} </option> )}
                         </select>
                         {/* <span className="actions"></span> */}
                     </span>

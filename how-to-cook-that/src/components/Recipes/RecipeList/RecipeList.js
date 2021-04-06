@@ -1,4 +1,4 @@
-import Recipe from '../Recipe/Recipe'
+import RecipeCard from '../RecipeCard/RecipeCard'
 import './RecipeList.css'
 import { Component } from 'react';
 import * as recipeService from '../../../services/recipeService';
@@ -34,7 +34,7 @@ class RecipeList extends Component {
         return (
             <ul className="recipe-list">
                 {this.state.recipes.map(x =>
-                    <Recipe
+                    <RecipeCard
                         key={x.id}
                         {...x}
                     />
