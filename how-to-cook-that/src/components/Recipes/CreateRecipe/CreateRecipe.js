@@ -2,6 +2,8 @@ import './CreateRecipe.css'
 import * as recipeService from '../../../services/recipeService';
 import * as categoriesService from '../../../services/categoriesService';
 import { useEffect, useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 
 const CreateRecipe = ({
@@ -15,67 +17,94 @@ const CreateRecipe = ({
         .then(res=>setCategories(res));
     }, []);
 
-    const onCreateRecipeSubmitHandler = (e) => {
-        e.preventDefault()
+    const initialValues = {
+        name: '',
+        category: 'soups',
+        imageUrl: '',
+        prepTime: '',
+        cookTime: '',
+        portions: '',
+        instructions: ''
+      }
+    
+      const onSubmit = values => {
         let recipe={
-            name:e.target.name.value,
-            category:e.target.category.value,
-            imageUrl:e.target.imageUrl.value,
-            prepTime:e.target.prepTime.value,
-            cookTime:e.target.cookTime.value,
-            portions:e.target.portions.value,
-            instructions:e.target.instructions.value
+            name:values.name,
+            category:values.category,
+            imageUrl:values.imageUrl,
+            prepTime:values.prepTime,
+            cookTime:values.cookTime,
+            portions:values.portions,
+            instructions:values.instructions
         }
         recipeService.create(recipe).then(()=>{
             history.push('/');
         })
-    }
-
-    return (
+      }
+    
+    
+      const validationSchema = Yup.object({
+        name: Yup.string().required('Required').min(3,'Name must be at least 3 characters long'),
+        imageUrl: Yup.string().required('Required').url(),
+        prepTime: Yup.number().required('Required').positive('Preparation time can not be negative'),
+        cookTime: Yup.number().required('Required').positive('Cooking time can not be negative'),
+        portions: Yup.number().required('Required').positive('Portions count can not be negative'),
+        instructions: Yup.string().required('Required').min(20,'Instructions must be at least 20 characters long'),
+      })
+    
+      return (
         <section className="create-recipe-section">
-            <form onSubmit={onCreateRecipeSubmitHandler}>
-                <h2>Add a new recipe</h2>
-                <div className="field">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" />
-                </div>
-                <div className="field">
-                    <label htmlFor="category">Category</label>
-                    <span className="input">
-                        <select type="text" name="category">
-                            {categories.map(x=>
-                               <option
-                               key={x.id}
-                               value={x.name}>{x.name} </option> )}
-                        </select>
-                        {/* <span className="actions"></span> */}
-                    </span>
-                </div>
-                <div className="field">
-                    <label htmlFor="imageUrl">Image URL</label>
-                    <input type="text" name="imageUrl" id="imageUrl" />
-                </div>
-                <div className="field">
-                    <label htmlFor="prepTime">Preparation time /min/</label>
-                    <input type="number" name="prepTime" id="prepTime" />
-                </div>
-                <div className="field">
-                    <label htmlFor="portions">Portions count</label>
-                    <input type="number" name="portions" id="portions" />
-                </div>
-                <div className="field">
-                    <label htmlFor="cookTime">Cooking time /min/</label>
-                    <input type="number" name="cookTime" id="cookTime" />
-                </div>
-                <div className="field">
-                    <label htmlFor="instructions">Instructions</label>
-                    <input type="textarea" name="instructions" id="instructions" />
-                </div>
-
-                <input className="submit-button" type="submit" value="Add Recipe" />
-            </form>
+          <Formik
+            enableReinitialize={true}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}>
+            <Form>
+              <div className="field">
+                <label htmlFor="name">Name</label>
+                <Field type="text" name="name" id="name" />
+                <ErrorMessage name='name' />
+              </div>
+              <div className="field">
+                        <label htmlFor="category">Category</label>
+                        <span className="input">
+                            <Field as='select' id='category' name='category' type="text" >
+                                {categories.map(x=>
+                                   <option
+                                   key={x.id}
+                                   value={x.name}>{x.name} </option> )}
+                            </Field>
+                        </span>
+                    </div>
+              <div className="field">
+                <label htmlFor="imageUrl">Image URL</label>
+                <Field type="text" name="imageUrl" id="imageUrl" />
+                <ErrorMessage name='imageUrl' />
+              </div>
+              <div className="field">
+                <label htmlFor="prepTime">Preparation time /min/</label>
+                <Field type="number" name="prepTime" id="prepTime" />
+                <ErrorMessage name='prepTime' />
+              </div>
+              <div className="field">
+                <label htmlFor="cookTime">Cooking time /min/</label>
+                <Field type="number" name="cookTime" id="cookTime" />
+                <ErrorMessage name='cookTime' />
+              </div>
+              <div className="field">
+                <label htmlFor="portions">Portions count</label>
+                <Field type="number" name="portions" id="portions" />
+                <ErrorMessage name='portions' />
+              </div>
+              <div className="field">
+                <label htmlFor="instructions">Instructions</label>
+                <Field as="textarea" name="instructions" id="instructions" />
+                <ErrorMessage name='instructions' />
+              </div>
+              <input className="submit-button" type="submit" value="Post the recipe" />
+            </Form>
+          </Formik>
         </section>
-    )
-}
-
+      )
+    }
 export default CreateRecipe;

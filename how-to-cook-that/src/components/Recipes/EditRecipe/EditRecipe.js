@@ -35,8 +35,12 @@ const EditRecipe = ({
 
 
   const validationSchema = Yup.object({
-    name: Yup.string().required('Required'),
-    imageUrl: Yup.string().required('Required'),
+    name: Yup.string().required('Required').min(3,'Name must be at least 3 characters long'),
+    imageUrl: Yup.string().required('Required').url(),
+    prepTime: Yup.number().required('Required').positive('Preparation time can not be negative'),
+    cookTime: Yup.number().required('Required').positive('Cooking time can not be negative'),
+    portions: Yup.number().required('Required').positive('Portions count can not be negative'),
+    instructions: Yup.string().required('Required').min(20,'Instructions must be at least 20 characters long'),
   })
 
   return (
