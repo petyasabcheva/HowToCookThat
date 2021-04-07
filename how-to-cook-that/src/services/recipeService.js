@@ -37,3 +37,10 @@ export const update = (recipe) => {
         body: JSON.stringify(recipe)
     });
 }
+
+export const deleteRecipe = (id) => {
+    return fetch(`${url}Recipes/${id}`, {
+        method: 'DELETE'
+    });
+}
+

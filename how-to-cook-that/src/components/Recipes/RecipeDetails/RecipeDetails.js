@@ -5,7 +5,7 @@ import './RecipeDetails.css'
 
 
 const RecipeDetails = ({
-    match
+   history, match
 }) => {
     let [recipe, setRecipe] = useState({});
 
@@ -13,6 +13,13 @@ const RecipeDetails = ({
         recipeService.getOne(match.params.id)
             .then(res => setRecipe(res));
     },[]);
+
+    const onDeleteClickHandler=(e)=>{
+        recipeService.deleteRecipe(match.params.id)
+        .then(()=>{
+            history.push('/')
+        })
+    }
 
 
     return (
@@ -24,7 +31,7 @@ const RecipeDetails = ({
             <div className="controll-recipe-buttons">
             <Link to="" className="button">Like recipe</Link>
             <Link to={`/recipe/edit/${recipe.id}`}  className="button">Edit recipe</Link>
-            <Link to={`/recipe/delete/${recipe.id}`}  className="button">Delete recipe</Link>
+            <button className='button' onClick={onDeleteClickHandler}>Delete this recipe</button>
             </div>
         </section>
     );
