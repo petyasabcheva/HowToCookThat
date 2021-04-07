@@ -5,7 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 const EditRecipe = ({
-  match
+  history,match,
 }) => {
 
   let [recipe, setRecipe] = useState({});
@@ -30,7 +30,20 @@ const EditRecipe = ({
   }
 
   const onSubmit = values => {
-    console.log(values);
+    let updatedRecipe={
+      id:recipe.id,
+      name:values.name,
+      categoryId: categories.find(c=>c.name==values.category).id,
+      imageUrl:values.imageUrl,
+      preparationTime:values.prepTime,
+      cookingTime:values.cookTime,
+      portionsCount:values.portions,
+      instructions:values.instructions
+    }; 
+
+    recipeService.update(updatedRecipe).then(()=>{
+      history.push('/');
+    })
   }
 
 

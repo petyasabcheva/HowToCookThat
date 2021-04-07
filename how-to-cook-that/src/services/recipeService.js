@@ -27,3 +27,13 @@ export const create = (recipe) => {
         body: JSON.stringify(recipe)
     });
 }
+
+export const update = (recipe) => {
+    return fetch(`${url}Recipes/${recipe.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(recipe)
+    });
+}
