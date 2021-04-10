@@ -22,7 +22,7 @@ namespace HowToCookThatAPI.Models
 
         public string ImageUrl { get; set; }
 
-        //public string AddedByUserId { get; set; }
+        public string UserEmail { get; set; }
 
         //public virtual User AddedByUser { get; set; }
 
@@ -30,7 +30,7 @@ namespace HowToCookThatAPI.Models
 
         public virtual Category Category { get; set; }
 
-        //public virtual ICollection<RecipeIngredient> Ingredients { get; set; }
+        //public virtual ICollection<Ingredient> Ingredients { get; set; }
 
         //public virtual ICollection<Image> Images { get; set; }
     }

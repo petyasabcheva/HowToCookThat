@@ -34,7 +34,7 @@ class RecipeList extends Component {
         return (
             <ul className="recipe-list">
                 {this.state.recipes.map(x =>
-                    <RecipeCard
+                    <RecipeCard 
                         key={x.id}
                         {...x}
                     />

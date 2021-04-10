@@ -12,6 +12,17 @@ export const getAll = (category = '') => {
         .catch(error => console.log(error));
 }
 
+export const getByUser = (userEmail) => {
+    return fetch(`${url}Recipes/ByUser/${userEmail}`, {
+        headers: {
+            'Content-Type': 'text/plain'
+        },
+    })
+        .then(res => res.json())
+        .catch(error => console.log(error));
+}
+
+
 export const getOne = (id) => {
     return fetch(`${url}Recipes/${id}`)
         .then(res => res.json())

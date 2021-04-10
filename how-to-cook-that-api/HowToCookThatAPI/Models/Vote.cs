@@ -13,9 +13,9 @@ namespace HowToCookThatAPI.Models
 
         public virtual Recipe Recipe { get; set; }
 
-        public string UserId { get; set; }
+        //public string UserId { get; set; }
 
-        public virtual User User { get; set; }
+        //public virtual User User { get; set; }
 
         public byte Value { get; set; }
     }

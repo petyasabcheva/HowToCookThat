@@ -1,15 +1,27 @@
-.recipe-categories-menu ul{
+.recipe-categories-menu ul {
     display: flex;
-    background-color: beige ;
+    background-color: beige;
     justify-content: center;
     list-style: none;
+    margin-top: 0;
+    margin-bottom: 30px;
+
 }
 
-.recipe-categories-menu ul li{
-padding: 10px 20px;
+.recipe-categories-menu ul li a {
+    color: #343D40;
+    font-weight: 500;
+    width: 100%;
+    padding: 10px 20px;
+    height: 100%;
+
 }
 
-.nav-link-selected{
+.recipe-categories-menu ul li {
+    padding: 10px 15px;
+}
+
+.nav-link-selected {
     background: white;
     color: black;
 }

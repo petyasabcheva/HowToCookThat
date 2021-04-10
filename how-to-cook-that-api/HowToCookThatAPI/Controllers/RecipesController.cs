@@ -36,6 +36,12 @@ namespace HowToCookThatAPI.Controllers
             return await _context.Recipes.Where(x=>x.Category.Name==categoryName).ToListAsync();
         }
 
+        [HttpGet("/api/Recipes/ByUser/{userEmail}")]
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipeByUser(string userEmail)
+        {
+            return await _context.Recipes.Where(x => x.UserEmail == userEmail).ToListAsync();
+        }
+
         // GET: api/Recipes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Recipe>> GetRecipe(int id)
@@ -94,7 +100,8 @@ namespace HowToCookThatAPI.Controllers
                 PreparationTime = input.PrepTime,
                 CookingTime = input.CookTime,
                 PortionsCount = input.Portions,
-                Instructions = input.Instructions
+                Instructions = input.Instructions,
+                UserEmail=input.UserEmail,
             };
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();

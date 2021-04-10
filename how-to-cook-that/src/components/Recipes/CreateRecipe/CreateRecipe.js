@@ -1,15 +1,16 @@
 import './CreateRecipe.css'
+import AuthContext from '../../../contexts/AuthContext';
 import * as recipeService from '../../../services/recipeService';
 import * as categoriesService from '../../../services/categoriesService';
-import { useEffect, useState } from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useEffect, useState,useContext} from 'react';
+import { Formik, Form, Field,ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 
 const CreateRecipe = ({
     history,
 }) => {
-
+    const { isAuthenticated, email } = useContext(AuthContext);
     let [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -35,7 +36,8 @@ const CreateRecipe = ({
             prepTime:values.prepTime,
             cookTime:values.cookTime,
             portions:values.portions,
-            instructions:values.instructions
+            instructions:values.instructions,
+            userEmail:email,
         }
         recipeService.create(recipe).then(()=>{
             history.push('/');
@@ -54,6 +56,9 @@ const CreateRecipe = ({
     
       return (
         <section className="create-recipe-section">
+          <div className="create-recipe-header">
+          <h1>Add a new recipe</h1>
+          </div>
           <Formik
             enableReinitialize={true}
             initialValues={initialValues}
@@ -63,7 +68,7 @@ const CreateRecipe = ({
               <div className="field">
                 <label htmlFor="name">Name</label>
                 <Field type="text" name="name" id="name" />
-                <ErrorMessage name='name' />
+                <span className='error-message'><ErrorMessage name='name' /></span>
               </div>
               <div className="field">
                         <label htmlFor="category">Category</label>
@@ -79,27 +84,27 @@ const CreateRecipe = ({
               <div className="field">
                 <label htmlFor="imageUrl">Image URL</label>
                 <Field type="text" name="imageUrl" id="imageUrl" />
-                <ErrorMessage name='imageUrl' />
+                <span className='error-message'><ErrorMessage name='imageUrl' /></span>
               </div>
               <div className="field">
                 <label htmlFor="prepTime">Preparation time /min/</label>
                 <Field type="number" name="prepTime" id="prepTime" />
-                <ErrorMessage name='prepTime' />
+                <span className='error-message'><ErrorMessage name='prepTime' /></span>
               </div>
               <div className="field">
                 <label htmlFor="cookTime">Cooking time /min/</label>
                 <Field type="number" name="cookTime" id="cookTime" />
-                <ErrorMessage name='cookTime' />
+                <span className='error-message'><ErrorMessage name='cookTime' /></span>
               </div>
               <div className="field">
                 <label htmlFor="portions">Portions count</label>
                 <Field type="number" name="portions" id="portions" />
-                <ErrorMessage name='portions' />
+                <span className='error-message'><ErrorMessage name='portions' /></span>
               </div>
               <div className="field">
                 <label htmlFor="instructions">Instructions</label>
-                <Field as="textarea" name="instructions" id="instructions" />
-                <ErrorMessage name='instructions' />
+                <Field as="textarea" rows='7' name="instructions" id="instructions" />
+                <span className='error-message'><ErrorMessage name='instructions' /></span>
               </div>
               <input className="submit-button" type="submit" value="Post the recipe" />
             </Form>

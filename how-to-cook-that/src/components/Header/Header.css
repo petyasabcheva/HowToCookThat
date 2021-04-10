@@ -1,39 +1,61 @@
-.site-header{
-    background-color: #95B700;
-    color: white;
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+.site-header a{
+    color: #343D40;
 }
+
 .site-navigation{
-    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    max-width: 90%;
     margin: auto;
+    background-color: white;
 }
 
 .navigation-logo{
     display: flex;
+    max-width: 90%;
+    margin: auto;
 }
 
 .navigation-logo img{
     max-width: 60px;
 }
 .navigation-logo p{
-    font-size: 20px;
-    font-weight: 800;
-    padding: 5px;
+    font-size: 40px;
+    margin: 10px;
+    padding: 15px;
     margin-left: 5px;
+    font-family: 'Cookie', cursive;
+}
+
+.green-nav-wrapper{
+    background-color: #97a948;
+}
+.site-nav-list-wrapper{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    max-width: 90%;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.site-nav-list-wrapper a{
+    color: white;
 }
 
 .site-navigation-list{
     list-style: none;
     display: flex;
-    align-items: center;
+    padding: 5px;
     
 }
 
 .site-navigation-list li{
     padding:0 15px;
-    font-size: 18px;
-    font-weight: 600;
+}
+
+.login-partial-list{
+    list-style: none;
 }

@@ -21,5 +21,7 @@ namespace HowToCookThatAPI.Models.InputModels
 
         public string Category { get; set; }
 
+        public string UserEmail { get; set; }
+
     }
 }

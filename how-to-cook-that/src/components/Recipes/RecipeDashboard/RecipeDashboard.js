@@ -2,7 +2,7 @@ import RecipeList from '../RecipeList/RecipeList'
 import RecipeCategories from '../RecipeCategories/RecipeCategories'
 import './RecipeDashboard.css'
 
-const Component=({
+const RecipeDashboard=({
     match,
 })=>{
     return(
@@ -12,4 +12,4 @@ const Component=({
         </section>
     )} 
 
-export default Component;
+export default RecipeDashboard;
