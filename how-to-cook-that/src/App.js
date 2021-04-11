@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import HomePage from './components/HomePage/HomePage';
 import RecipeDashboard from './components/Recipes/RecipeDashboard/RecipeDashboard';
 import RecipeDetails from './components/Recipes/RecipeDetails/RecipeDetails';
 import CreateRecipe from './components/Recipes/CreateRecipe/CreateRecipe';
@@ -33,7 +34,7 @@ function App() {
         <Header userEmail={user?.email} isAuthenticated={Boolean(user)} />
         <main className='main-section'>
           <Switch>
-            <Route path="/" exact component={RecipeDashboard} />
+            <Route path="/" exact component={HomePage} />
             <Route path="/recipes" exact component={RecipeDashboard} />
             <Route path="/recipes/:category" exact component={RecipeDashboard} />
             <Route path="/my-recipes" exact component={MyRecipesDashboard} />

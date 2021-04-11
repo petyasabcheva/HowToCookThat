@@ -1,0 +1,65 @@
+.newest-recipes-list,
+.top-rated-recipes-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+}
+
+.newest-recipes-section {
+    background-image: url('https://demos.boxystudio.com/basil/wp-content/uploads/2018/10/cooked_bg_2018-2000x1357.jpg');
+}
+
+.newest-recipes-wrapper {
+    background-color: #2d383dcc;
+    margin: 0;
+    padding: 30px 0;
+}
+
+.newest-recipes-wrapper h1,
+.newest-recipes-wrapper h2 {
+    color: white;
+    font-family: 'Crimson Text', serif;
+    font-size: 40px;
+}
+
+.register-now {
+    background-color: #97a948;
+    padding: 100px;
+    font-family: 'Crimson Text', serif;
+}
+
+.register-now h2{
+    max-width: 800px;
+    font-size: 40px;
+    color: #343D40;
+    margin: auto;
+}
+
+.register-now a{
+    text-decoration: underline;
+    color: #343D40;
+
+}
+
+.top-rated-recipes-section{
+    padding: 50px 0;
+
+}
+.top-rated-recipes-section h2{
+    color: #343D40;
+    font-family: 'Crimson Text', serif;
+    font-size: 40px;
+}
+
+.top-rated-recipes-list {
+    margin-top: 50px;
+}
+
+.view-all-btn{
+    background-color: #343D40;
+    color: white;
+    border-radius: 5px;
+    border:none;
+    padding: 8px;
+}

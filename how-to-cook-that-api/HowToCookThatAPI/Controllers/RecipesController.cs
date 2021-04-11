@@ -29,6 +29,18 @@ namespace HowToCookThatAPI.Controllers
             return await _context.Recipes.ToListAsync();
         }
 
+        [HttpGet("/api/Recipes/GetMostLikedRecipes")]
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetMostLikedRecipes()
+        {
+            return await _context.Recipes.OrderByDescending(r => r.Likes.Count).Take(6).ToListAsync();
+        }
+
+        [HttpGet("/api/Recipes/GetNewestRecipes")]
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetNewestRecipes()
+        {
+            return await _context.Recipes.OrderByDescending(r => r.DateCreated).Take(3).ToListAsync();
+        }
+
         // GET: api/Recipes/categoryName
         [HttpGet("/api/{categoryName}")]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipeByCategory(string categoryName)
@@ -101,7 +113,8 @@ namespace HowToCookThatAPI.Controllers
                 CookingTime = input.CookTime,
                 PortionsCount = input.Portions,
                 Instructions = input.Instructions,
-                UserEmail=input.UserEmail,
+                UserEmail = input.UserEmail,
+                DateCreated = DateTime.Now,
             };
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
@@ -125,6 +138,48 @@ namespace HowToCookThatAPI.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+
+
+        [HttpGet("/api/check/{id}/{email}")]
+        public bool CheckIfLiked(int id,string email)
+        {
+            return _context.Recipes.Any(e => e.Id == id&&e.Likes.Any(x=>x.UserEmail==email));
+        }
+
+        [HttpPost("/api/like/{id}/{email}")]
+        public async Task<IActionResult> Like(int id, string email)
+        {
+            var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            recipe.Likes.Add(new Like() {UserEmail=email,Recipe=recipe});
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPost("/api/dislike/{id}/{email}")]
+        public async Task<IActionResult> Dislike(int id, string email)
+        {
+            var recipe = _context.Recipes.FirstOrDefault(r => r.Id == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            var like = _context.Likes.FirstOrDefault(l => l.Recipe == recipe && l.UserEmail == email);
+            if (like == null)
+            {
+                return NotFound();
+            }
+            recipe.Likes.Remove(like);
+            await _context.SaveChangesAsync();
+
+            return Ok();
         }
 
         private bool RecipeExists(int id)

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace HowToCookThatAPI.Models
 {
-    public class Ingredient
+    public class Like
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Quantity { get; set; }
+        public string UserEmail { get; set; }
+        public Recipe Recipe { get; set; }
 
     }
 }

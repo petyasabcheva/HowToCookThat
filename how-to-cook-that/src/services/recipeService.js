@@ -12,6 +12,27 @@ export const getAll = (category = '') => {
         .catch(error => console.log(error));
 }
 
+export const getMostLiked = () => {
+
+    return fetch(`${url}Recipes/GetMostLikedRecipes`, {
+        headers: {
+            'Content-Type': 'text/plain'
+        }
+    })
+        .then(res => res.json())
+        .catch(error => console.log(error));
+}
+export const getNewest = () => {
+
+    return fetch(`${url}Recipes/GetNewestRecipes`, {
+        headers: {
+            'Content-Type': 'text/plain'
+        }
+    })
+        .then(res => res.json())
+        .catch(error => console.log(error));
+}
+
 export const getByUser = (userEmail) => {
     return fetch(`${url}Recipes/ByUser/${userEmail}`, {
         headers: {
@@ -55,3 +76,19 @@ export const deleteRecipe = (id) => {
     });
 }
 
+
+export const like = (id,email) => {
+    return fetch(`${url}like/${id}/${email}`, {
+        method: 'POST'
+    });
+}
+
+export const dislike = (id,email) => {
+    return fetch(`${url}dislike/${id}/${email}`, {
+        method: 'POST'
+    });
+}
+
+export const checkIfLiked = (id,email) => {
+    return fetch(`${url}check/${id}/${email}`);
+}

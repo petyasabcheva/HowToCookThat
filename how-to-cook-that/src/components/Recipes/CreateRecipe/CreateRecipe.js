@@ -38,7 +38,9 @@ const CreateRecipe = ({
             portions:values.portions,
             instructions:values.instructions,
             userEmail:email,
+            ingredients:values.ingredients
         }
+        console.log(recipe);
         recipeService.create(recipe).then(()=>{
             history.push('/');
         })
@@ -101,6 +103,9 @@ const CreateRecipe = ({
                 <Field type="number" name="portions" id="portions" />
                 <span className='error-message'><ErrorMessage name='portions' /></span>
               </div>
+              {/* <div className="field" id='field-with-ingredients'>
+              <IngredientsList />
+              </div> */}
               <div className="field">
                 <label htmlFor="instructions">Instructions</label>
                 <Field as="textarea" rows='7' name="instructions" id="instructions" />

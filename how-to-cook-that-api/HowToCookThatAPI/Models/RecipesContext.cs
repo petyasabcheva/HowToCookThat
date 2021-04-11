@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HowToCookThatAPI.Models.InputModels;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace HowToCookThatAPI.Models
@@ -14,7 +15,8 @@ namespace HowToCookThatAPI.Models
         //public DbSet<User> Users { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Vote> Votes { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

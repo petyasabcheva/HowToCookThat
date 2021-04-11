@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HowToCookThatAPI.Models.InputModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,11 @@ namespace HowToCookThatAPI.Models
 {
     public class Recipe
     {
+        public Recipe()
+        {
+            //this.Ingredients = new HashSet<Ingredient>();
+            this.Likes = new HashSet<Like>();
+        }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
@@ -20,11 +26,11 @@ namespace HowToCookThatAPI.Models
 
         public int PortionsCount { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
         public string ImageUrl { get; set; }
 
         public string UserEmail { get; set; }
-
-        //public virtual User AddedByUser { get; set; }
 
         public int CategoryId { get; set; }
 
@@ -32,6 +38,6 @@ namespace HowToCookThatAPI.Models
 
         //public virtual ICollection<Ingredient> Ingredients { get; set; }
 
-        //public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<Like> Likes { get; set; }
     }
 }

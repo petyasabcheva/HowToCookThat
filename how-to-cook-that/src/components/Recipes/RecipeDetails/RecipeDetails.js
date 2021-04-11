@@ -10,10 +10,16 @@ const RecipeDetails = ({
 }) => {
     let [recipe, setRecipe] = useState({});
     const { isAuthenticated, email } = useContext(AuthContext);
+    let [likedByUser, setLikedByUser] = useState(false);
 
     useEffect(() => {
         recipeService.getOne(match.params.id)
             .then(res => setRecipe(res));
+        if (isAuthenticated) {
+            recipeService.checkIfLiked(match.params.id, email).then(
+                res => setLikedByUser(res)
+            );
+        }
     }, []);
 
     const onDeleteClickHandler = (e) => {
@@ -21,6 +27,25 @@ const RecipeDetails = ({
             .then(() => {
                 history.push('/')
             })
+    }
+
+    const onLikeClickHandler = (e) => {
+        e.preventDefault();
+        if (isAuthenticated) {
+            if (!likedByUser) {
+                recipeService.like(match.params.id, email)
+                    .then(() => {
+                        setLikedByUser(true);
+                    })
+            } else {
+                recipeService.dislike(match.params.id, email)
+                    .then(() => {
+                        setLikedByUser(false);
+                    })
+            }
+        } else {
+            history.push('/login');
+        }
     }
 
 
@@ -31,10 +56,10 @@ const RecipeDetails = ({
             <p className="img"><img src={recipe.imageUrl} alt="recipePhoto" /></p>
             <p className="description">{recipe.instructions}</p>
             <div className="controll-recipe-buttons">
-                {isAuthenticated&&recipe.userEmail==email ?
+                {isAuthenticated && recipe.userEmail == email ?
                     <div> <Link to={`/recipe/edit/${recipe.id}`} className="button">Edit recipe</Link>
                         <button className='button' onClick={onDeleteClickHandler}>Delete this recipe</button></div>
-                    : <Link to="" className="button">Like recipe</Link>}
+                    : <button className="button" onClick={onLikeClickHandler}>{likedByUser ? 'Disike' : 'Like'}</button>}
             </div>
         </section>
     );
