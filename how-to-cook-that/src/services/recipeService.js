@@ -5,7 +5,6 @@ export const getAll = (category = '') => {
 
     return fetch(recipesUrl, {
         headers: {
-            'Content-Type': 'text/plain'
         }
     })
         .then(res => res.json())

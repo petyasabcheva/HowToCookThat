@@ -38,7 +38,6 @@ const CreateRecipe = ({
             portions:values.portions,
             instructions:values.instructions,
             userEmail:email,
-            ingredients:values.ingredients
         }
         console.log(recipe);
         recipeService.create(recipe).then(()=>{

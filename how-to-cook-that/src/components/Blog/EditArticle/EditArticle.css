@@ -1,0 +1,61 @@
+.edit-article-section form{
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    margin: auto;
+
+}
+
+.edit-article-section form input,
+.input select{
+    padding: 5px;
+    border-radius: 5px;
+    width: 100%;
+    border:none
+}
+.edit-article-section textarea{
+    border-radius:5px;
+    border: none;
+    width: 100%;
+}
+
+.field{
+    margin-bottom: 20px;
+}
+
+.error-message{
+    color: rgb(162, 54, 54);
+}
+
+.submit-button{
+    margin-top: 30px;
+}
+
+.edit-article-section .field{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-article-header{
+    background-image: url("https://demos.boxystudio.com/basil/wp-content/uploads/2014/09/salad1-1400x700.jpg");
+    background-position: center;
+}
+.edit-article-header h1{
+    background-color: #2d383d;
+    opacity: 0.8;
+    padding: 70px;
+    margin: 0;
+    color: white;
+    font-size: 40px;
+    margin-bottom: 50px;
+    font-family: 'Crimson Text', serif;
+}
+
+.edit-article-section .submit-button{
+    background-color: #97a948d1;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    max-width: 200px;
+    margin: 20px auto;
+}

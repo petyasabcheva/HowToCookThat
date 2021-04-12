@@ -42,6 +42,26 @@
 
 }
 
+.top-articles-section{
+    background-color: white;
+    padding: 50px 0;
+
+}
+
+.top-articles-list{
+    display: flex;
+    justify-content: center;
+    padding:0;
+}
+
+.top-articles-section h2{
+    color: #343D40;
+    font-family: 'Crimson Text', serif;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+
 .top-rated-recipes-section{
     padding: 50px 0;
 
@@ -63,3 +83,4 @@
     border:none;
     padding: 8px;
 }
+

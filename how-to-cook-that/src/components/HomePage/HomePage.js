@@ -3,13 +3,16 @@ import {Link} from 'react-router-dom';
 import AuthContext from '../../contexts/AuthContext';
 
 import * as recipeService from '../../services/recipeService';
+import * as articlesService from '../../services/articlesService';
 import RecipeCard from '../Recipes/RecipeCard/RecipeCard';
+import ArticleCard from '../Blog/ArticleCard/ArticleCard'
 import './HomePage.css';
 
 const HomePage = () => {
     const { isAuthenticated, email } = useContext(AuthContext);
     let [mostLikedRecipes, setMostLikedRecipes] = useState([]);
     let [newestRecipes, setNewestRecipes] = useState([]);
+    let [articles, setArticles] = useState([]);
 
         useEffect(() => {
             recipeService.getMostLiked().then(res =>{
@@ -19,6 +22,11 @@ const HomePage = () => {
             });
             recipeService.getNewest().then(res =>{
                 setNewestRecipes(res)
+            }).catch((error) => {
+                console.log(error);
+            });
+            articlesService.getTop().then(res =>{
+                setArticles(res)
             }).catch((error) => {
                 console.log(error);
             });
@@ -44,6 +52,20 @@ const HomePage = () => {
                {isAuthenticated
                ? <h2>Thank you for being part of our comunity. Make sure to <Link to='/recipe/create'>share</Link> your favourite recipes with everyone</h2> 
                : <h2><Link to='/register'>Register now</Link> and share your favourite recipes with the comunity</h2>}
+            </section>
+            <section className="top-articles-section">
+                <div className='top-articles-wrapper'>
+                <h2>From The Blog</h2>
+                    <ul className="top-articles-list">
+                        {articles.map(x =>
+                            <ArticleCard
+                                key={x.id}
+                                {...x}
+                            />
+                        )
+                        }
+                    </ul>
+                </div>
             </section>
             <section className="top-rated-recipes-section">
                 <h2>Our Most Liked Recipes</h2>

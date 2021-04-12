@@ -16,19 +16,22 @@ const Header = () => {
                 <section className="green-nav-wrapper">
                     <div className="site-nav-list-wrapper">
                         <ul className="site-navigation-list">
-                            <li><NavLink to=''>Recipes</NavLink></li>
+                            <li><NavLink activeClassName="header-nav-link-selected" to='/recipes'>Recipes</NavLink></li>
                             {isAuthenticated
-                                ? <li><NavLink to='/my-recipes'>My recipes</NavLink></li>
+                                ? <li><NavLink activeClassName="header-nav-link-selected" to='/my-recipes'>My recipes</NavLink></li>
                                 : ''}
                             {isAuthenticated
-                                ? <li><NavLink to='/recipe/create'>Add recipe</NavLink></li>
+                                ? <li><NavLink activeClassName="header-nav-link-selected" to='/recipe/create'>Add recipe</NavLink></li>
                                 : <li><NavLink to='/login'>Add recipe</NavLink></li>}
-                            <li><NavLink to=''>Blog</NavLink></li>
+                            <li><NavLink activeClassName="header-nav-link-selected" exact to='/articles'>Blog</NavLink></li>
+                            {isAuthenticated 
+                            ?<li><NavLink activeClassName="header-nav-link-selected"  to='/articles/create'>Add Article</NavLink></li>
+                            :<li><NavLink  to='/login'>Add Article</NavLink></li> }
                         </ul>
                         <ul className="login-partial-list">
                             {isAuthenticated
                                 ? <li><NavLink to='/logout'>Log out</NavLink></li>
-                                : <li><NavLink to='/login'>Sign in</NavLink></li>}
+                                : <li><NavLink activeClassName="header-nav-link-selected" to='/login'>Sign in</NavLink></li>}
                         </ul>
                     </div>
                 </section>

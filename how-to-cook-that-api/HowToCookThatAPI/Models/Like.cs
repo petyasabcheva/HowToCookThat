@@ -11,7 +11,6 @@ namespace HowToCookThatAPI.Models
         [Key]
         public int Id { get; set; }
         public string UserEmail { get; set; }
-        public Recipe Recipe { get; set; }
 
     }
 }

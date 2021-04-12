@@ -1,0 +1,23 @@
+.article-details-wrapper{
+max-width: 70%;
+margin: auto;
+}
+
+.article-details-wrapper h3{
+    font-size: 30px;
+}
+
+.article-details-wrapper img{
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.article-details-wrapper .button{
+    border:none;
+    color: black;
+    font-size: 15px;
+    background-color:rgb(205, 214, 190);
+    margin: 10px;
+    padding: 8px;
+    border-radius: 5px;
+}

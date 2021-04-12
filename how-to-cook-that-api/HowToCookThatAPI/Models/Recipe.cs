@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -39,5 +40,6 @@ namespace HowToCookThatAPI.Models
         //public virtual ICollection<Ingredient> Ingredients { get; set; }
 
         public virtual ICollection<Like> Likes { get; set; }
+
     }
 }

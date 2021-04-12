@@ -31,29 +31,40 @@
 .green-nav-wrapper{
     background-color: #97a948;
 }
+
+.header-nav-link-selected{
+    background-color:#6e801c;
+}
+
 .site-nav-list-wrapper{
     display: flex;
     justify-content: space-between;
     margin: auto;
     max-width: 90%;
-    align-items: center;
     font-weight: 600;
     font-size: 18px;
 }
 
 .site-nav-list-wrapper a{
     color: white;
+    padding:0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
 }
 
-.site-navigation-list{
+.site-navigation-list,
+.login-partial-list{
     list-style: none;
     display: flex;
-    padding: 5px;
+    padding: 0 5px;
+    margin: 0;
     
 }
 
 .site-navigation-list li{
-    padding:0 15px;
+    display: flex;
 }
 
 .login-partial-list{

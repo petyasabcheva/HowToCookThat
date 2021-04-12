@@ -11,10 +11,16 @@ import EditRecipe from './components/Recipes/EditRecipe/EditRecipe';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import MyRecipesDashboard from './components/Recipes/MyRecipesDashboard/MyRecipesDashboard';
+
+import BlogDashboard from './components/Blog/BlogDashboard/BlogDashboard'
+
 import { auth } from './utils/firebase';
 import './utils/firebase';
 import { useEffect, useState } from 'react';
 import AuthContext from './contexts/AuthContext';
+import CreateArticle from './components/Blog/CreateArticle/CreateArticle';
+import ArticleDetails from './components/Blog/ArticleDetails/ArticleDetails';
+import EditArticle from './components/Blog/EditArticle/EditArticle';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -41,6 +47,13 @@ function App() {
             <Route path="/recipes/details/:id" exact component={RecipeDetails} />
             <Route path="/recipe/create" exact component={CreateRecipe} />
             <Route path="/recipe/edit/:id" exact component={EditRecipe} />
+
+            <Route path="/articles" exact component={BlogDashboard} />
+            <Route path="/articles/create" exact component={CreateArticle} />
+            <Route path="/articles/details/:id" exact component={ArticleDetails} />
+            <Route path="/articles/edit/:id" exact component={EditArticle} />
+
+
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <Route path="/logout" render={props => {

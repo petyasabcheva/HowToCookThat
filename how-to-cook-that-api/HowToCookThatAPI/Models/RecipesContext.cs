@@ -24,6 +24,7 @@ namespace HowToCookThatAPI.Models
                 .HasOne<Category>(r => r.Category)
                 .WithMany(c => c.Recipes);
 
+
             builder.Entity<Category>().HasData(
                new Category() { Id = 1, Name = "soups" },
                new Category() { Id = 2, Name = "salads" },

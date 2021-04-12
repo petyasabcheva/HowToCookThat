@@ -1,0 +1,11 @@
+.blog-dashboard-section {
+    margin-top: 50px;
+}
+
+.blog-dashboard-section .articles-list{
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
