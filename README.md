@@ -5,6 +5,7 @@ My project for the ReactJS course at SoftUni.
 
 
 ## Home Page
+*for registered users
 ![image](https://user-images.githubusercontent.com/58670549/114349461-9b5ae580-9b70-11eb-8332-8420ec1cd3ce.png)
 
 ### Built With:
