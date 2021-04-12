@@ -34,7 +34,10 @@ My project for the ReactJS course at SoftUni.
 * Edit and delete their articles
 * Like recipes
 
-#### User-friendly forms
+### Responsive design
+![image](https://user-images.githubusercontent.com/58670549/114354868-7ae25980-9b77-11eb-8b1a-f5e49160ae3c.png)
+
+### User-friendly forms
 *on change validation only after the user has selected the field
 ![image](https://user-images.githubusercontent.com/58670549/114351767-bb3fd880-9b73-11eb-9e9f-4bf9f6ce6c8e.png)
 
