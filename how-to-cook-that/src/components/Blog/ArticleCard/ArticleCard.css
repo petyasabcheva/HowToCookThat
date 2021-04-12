@@ -16,7 +16,14 @@
     border-top-right-radius: 7px;
 }
 
+.article-wrapper p{
+    max-width: 90%;
+    margin:auto;
+    padding-bottom: 10px;
+}
+
+
 .article-name{
-    padding: 10px;
+    padding-top: 10px;
     color: #343D40;
 }

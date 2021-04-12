@@ -11,7 +11,6 @@ const RecipeCard = (
     let[likesCount,setLikesCount]=useState(1);
 
     useEffect(()=>{
-        console.log(likes);
         setLikesCount(likes.length)
     },[likes]);
 

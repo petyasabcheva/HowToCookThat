@@ -28,7 +28,7 @@ const CreateArticle = ({
         console.log(article);
         articlesService.create(article).then(() => {
             history.push('/');
-        })
+        }).catch(error => console.log(error));
     }
 
 

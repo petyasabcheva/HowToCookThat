@@ -26,7 +26,19 @@ namespace HowToCookThatAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
         {
-            return await _context.Recipes.ToListAsync();
+            return await _context.Recipes.Select(r => new Recipe()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Instructions = r.Instructions,
+                Likes = r.Likes,
+                PreparationTime = r.PreparationTime,
+                CookingTime = r.CookingTime,
+                PortionsCount = r.PortionsCount,
+                ImageUrl = r.ImageUrl,
+                CategoryId = r.CategoryId,
+                Category=r.Category
+            }).ToListAsync();
         }
 
         [HttpGet("/api/Recipes/GetMostLikedRecipes")]
@@ -42,7 +54,8 @@ namespace HowToCookThatAPI.Controllers
                 CookingTime = r.CookingTime,
                 PortionsCount = r.PortionsCount,
                 ImageUrl = r.ImageUrl,
-                CategoryId = r.CategoryId
+                Category=r.Category,
+                CategoryId = r.CategoryId,
             }).ToListAsync();
         }
 
@@ -59,7 +72,8 @@ namespace HowToCookThatAPI.Controllers
                 CookingTime = r.CookingTime,
                 PortionsCount = r.PortionsCount,
                 ImageUrl = r.ImageUrl,
-                CategoryId = r.CategoryId
+                CategoryId = r.CategoryId,
+                Category = r.Category
             }).ToListAsync();
         }
 
@@ -77,7 +91,8 @@ namespace HowToCookThatAPI.Controllers
                 CookingTime = r.CookingTime,
                 PortionsCount = r.PortionsCount,
                 ImageUrl = r.ImageUrl,
-                CategoryId = r.CategoryId
+                CategoryId = r.CategoryId,
+                Category = r.Category
             }).ToListAsync();
         }
 
@@ -178,7 +193,18 @@ namespace HowToCookThatAPI.Controllers
         [HttpGet("/api/check/{id}/{email}")]
         public bool CheckIfLiked(int id,string email)
         {
-            return _context.Recipes.Any(e => e.Id == id&&e.Likes.Any(x=>x.UserEmail==email));
+            return _context.Recipes.Select(r => new Recipe()
+            {
+                Id = r.Id,
+                Name = r.Name,
+                Instructions = r.Instructions,
+                Likes = r.Likes,
+                PreparationTime = r.PreparationTime,
+                CookingTime = r.CookingTime,
+                PortionsCount = r.PortionsCount,
+                ImageUrl = r.ImageUrl,
+                CategoryId = r.CategoryId
+            }).Any(e => e.Id == id&&e.Likes.Any(x=>x.UserEmail==email));
         }
 
         [HttpPost("/api/like/{id}/{email}")]

@@ -13,7 +13,7 @@ class RecipeList extends Component {
         }
     }
     componentDidMount() {
-        recipeService.getAll().then(res => this.setState({ recipes: res }));
+        recipeService.getAll().then(res => this.setState({ recipes: res })).catch(error => console.log(error));
     }
 
     componentDidUpdate(prevProps) {

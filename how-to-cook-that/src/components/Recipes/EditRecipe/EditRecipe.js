@@ -14,9 +14,9 @@ const EditRecipe = ({
 
   useEffect(() => {
     recipeService.getOne(match.params.id)
-      .then(res => setRecipe(res));
+      .then(res => setRecipe(res)).catch(error => console.log(error));
     categoriesService.getAll()
-      .then(res => setCategories(res))
+      .then(res => setCategories(res)).catch(error => console.log(error));
   }, []);
 
 
@@ -39,7 +39,9 @@ const EditRecipe = ({
       preparationTime: values.prepTime,
       cookingTime: values.cookTime,
       portionsCount: values.portions,
-      instructions: values.instructions
+      instructions: values.instructions,
+      likes:recipe.likes,
+      userEmail:recipe.userEmail
     };
 
     recipeService.update(updatedRecipe).then(() => {

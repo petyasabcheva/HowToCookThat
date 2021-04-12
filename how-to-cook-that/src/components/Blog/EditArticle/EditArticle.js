@@ -12,7 +12,7 @@ const EditArticle = ({
 
     useEffect(() => {
         articlesService.getOne(match.params.id)
-            .then(res => setArticle(res));
+            .then(res => setArticle(res)).catch(error => console.log(error));;
     }, []);
 
 

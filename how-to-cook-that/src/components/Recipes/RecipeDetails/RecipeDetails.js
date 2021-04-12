@@ -10,16 +10,16 @@ const RecipeDetails = ({
 }) => {
     let [recipe, setRecipe] = useState({});
     const { isAuthenticated, email } = useContext(AuthContext);
-    let [likedByUser, setLikedByUser] = useState(false);
+    let [likedByUser, setLikedByUser] = useState('false');
 
     useEffect(() => {
         recipeService.getOne(match.params.id)
-            .then(res => setRecipe(res));
-        if (isAuthenticated) {
-            recipeService.checkIfLiked(match.params.id, email).then(
-                res => setLikedByUser(res)
-            );
+            .then(res => setRecipe(res)).catch(error => console.log(error));
+        recipeService.checkIfLiked(match.params.id, email).then((res) => {
+            setLikedByUser(res);
+            console.log(likedByUser);
         }
+        ).catch(error => console.log(error));
     }, []);
 
     const onDeleteClickHandler = (e) => {

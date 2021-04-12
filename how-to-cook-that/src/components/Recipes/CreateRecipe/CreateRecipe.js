@@ -15,7 +15,7 @@ const CreateRecipe = ({
 
     useEffect(() => {
         categoriesService.getAll()
-        .then(res=>setCategories(res));
+        .then(res=>setCategories(res)).catch(error => console.log(error));;
     }, []);
 
     const initialValues = {

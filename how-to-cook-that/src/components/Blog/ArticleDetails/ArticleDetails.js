@@ -20,7 +20,7 @@ const ArticleDetails = ({
         articlesService.deleteArticle(match.params.id)
             .then(() => {
                 history.push('/')
-            })
+            }).catch(error => console.log(error));
     }
 
 

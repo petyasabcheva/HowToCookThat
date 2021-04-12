@@ -11,7 +11,7 @@ const RecipeDashboard=()=>{
     
     useEffect(() => {
         articlesSercive.getAll()
-        .then(res=>setArticles(res));
+        .then(res=>setArticles(res)).catch(error => console.log(error));;
     }, []);
 
     return(

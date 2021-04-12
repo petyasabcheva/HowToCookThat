@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+@import 'https://use.fontawesome.com/releases/v5.10.2/css/all.css';
 
 .site-header a{
     color: #343D40;
@@ -69,4 +70,30 @@
 
 .login-partial-list{
     list-style: none;
+}
+.menu-hidden{
+    display: none;
+    padding: 20px 0;
+}
+
+.site-nav-hidden-list-wrapper{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.site-nav-hidden-list-wrapper ul{
+    list-style: none;
+    padding: 0;
+}
+
+@media all and (max-width: 700px) {
+    .site-nav-list-wrapper{
+        display: none;
+    }
+
+    .menu-hidden {
+        display: block;
+    }
 }

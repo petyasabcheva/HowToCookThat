@@ -12,7 +12,7 @@ const MyRecipesDashboard=({
 
     useEffect(() =>{
         console.log(email);
-        recipeService.getByUser(email).then(res => setRecipes(res));
+        recipeService.getByUser(email).then(res => setRecipes(res)).catch(error => console.log(error));
     },[]);
 
     return(
